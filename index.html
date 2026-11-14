@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#647b5d">
+<title>حاسبة الطلبات | التوزيعات والثيمات</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--g:#647b5d;--g2:#4d6347;--g3:#e9f0e5;--bg:#f4f6f1;--card:#fff;--ink:#222820;--mut:#71786d;--line:#e4e9df;--red:#b54747;--wa:#1fa855;--sh:0 8px 28px rgba(60,80,52,.10);--gold:#c9a96a;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--g:#86a47d;--g2:#a4c29a;--g3:#25302a;--bg:#141813;--card:#1c221b;--ink:#eef2ea;--mut:#9aa595;--line:#2b3329;--sh:0 8px 28px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--g:#86a47d;--g2:#a4c29a;--g3:#25302a;--bg:#141813;--card:#1c221b;--ink:#eef2ea;--mut:#9aa595;--line:#2b3329;--sh:0 8px 28px rgba(0,0,0,.35)}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Tajawal,Tahoma,Arial,sans-serif;transition:background .4s,color .4s}
+.wrap{max-width:680px;margin:auto;padding:14px 14px 130px}
+@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(14px,-16px) scale(1.12)}}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.35)}100%{transform:scale(1)}}
+@keyframes shine{from{transform:translateX(120%) skewX(-20deg)}to{transform:translateX(-220%) skewX(-20deg)}}
+.hero{position:relative;overflow:hidden;text-align:center;padding:34px 18px 28px;border-radius:28px;color:#fff;background:linear-gradient(135deg,#5a7253,#7d9a73 55%,#9db48f);box-shadow:var(--sh);animation:up .7s both}
+.hero i{position:absolute;border-radius:50%;background:rgba(255,255,255,.14);animation:float 9s ease-in-out infinite}
+.hero i:nth-child(1){width:150px;height:150px;top:-50px;right:-40px}.hero i:nth-child(2){width:100px;height:100px;bottom:-30px;left:-20px;animation-delay:-3s}.hero i:nth-child(3){width:60px;height:60px;top:40%;left:12%;animation-delay:-6s}
+.logo{position:relative;width:62px;height:62px;margin:0 auto 14px;border-radius:20px;background:rgba(255,255,255,.22);backdrop-filter:blur(6px);display:grid;place-items:center;font-size:30px;border:1px solid rgba(255,255,255,.4)}
+.hero h1{position:relative;margin:0 0 8px;font-size:26px;font-weight:800}.hero p{position:relative;margin:0;font-size:14px;line-height:1.9;opacity:.92}
+.theme{position:absolute;top:14px;left:14px;z-index:2;width:38px;height:38px;border:0;border-radius:12px;background:rgba(255,255,255,.22);color:#fff;font-size:17px;cursor:pointer;transition:transform .3s}.theme:hover{transform:rotate(25deg)}
+.steps{display:flex;justify-content:center;gap:8px;margin:16px 0 4px;flex-wrap:wrap;animation:up .7s .15s both}
+.steps span{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:7px 13px;font-size:12.5px;color:var(--mut)}.steps b{color:var(--g);margin-left:5px}
+.sec{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px;margin:14px 0;box-shadow:var(--sh);animation:up .7s both}
+.sec h2{display:flex;align-items:center;gap:9px;margin:0 0 14px;font-size:17px;font-weight:800}.sec h2 em{font-style:normal;display:grid;place-items:center;width:30px;height:30px;border-radius:10px;background:var(--g3);font-size:15px}
+.card{display:flex;align-items:center;gap:13px;padding:12px;margin-bottom:10px;border:1.5px solid var(--line);border-radius:18px;background:var(--card);transition:.3s;animation:up .6s calc(.2s + var(--i)*.08s) both}
+.card.on{border-color:var(--g);background:var(--g3);box-shadow:0 6px 18px rgba(100,123,93,.18);transform:translateY(-2px)}
+.thumb{width:60px;height:60px;border-radius:16px;background:var(--g3);display:grid;place-items:center;font-size:29px;flex:none;transition:transform .4s}.card.on .thumb{transform:rotate(-6deg) scale(1.06);background:var(--card)}
+.info{flex:1;min-width:0}.info h3{margin:0 0 5px;font-size:15.5px;font-weight:700}.pr{color:var(--g2);font-size:13px;font-weight:500}
+.qty{display:flex;align-items:center;gap:6px;background:var(--bg);padding:4px;border-radius:14px}
+.qty button{width:36px;height:36px;border:0;border-radius:11px;background:var(--card);color:var(--g2);font:inherit;font-size:20px;font-weight:700;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.08);transition:transform .15s,background .2s}.qty button:active{transform:scale(.86)}.qty button:hover{background:var(--g);color:#fff}
+.qty .n{min-width:26px;text-align:center;font-weight:800;font-size:16px;display:inline-block}.qty .n.bump{animation:pop .3s}
+label{display:block;font-size:13px;color:var(--mut);margin:13px 0 7px;font-weight:500}
+input,textarea{width:100%;border:1.5px solid var(--line);border-radius:13px;padding:13px;font:inherit;background:var(--card);color:var(--ink);outline:none;transition:.25s}
+input:focus,textarea:focus{border-color:var(--g);box-shadow:0 0 0 4px var(--g3)}textarea{min-height:84px;resize:vertical}
+.lines{margin-bottom:6px}.ln{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:14px;animation:up .35s both}.ln span:last-child{font-weight:700;color:var(--g2);white-space:nowrap}
+.empty{text-align:center;color:var(--mut);font-size:13.5px;padding:18px 0}
+.tr{display:flex;justify-content:space-between;align-items:center;padding:8px 0;color:var(--mut);font-size:14px}
+.grand{margin-top:8px;padding:16px;border-radius:16px;background:var(--g3);color:var(--ink);font-weight:800}.grand strong{font-size:27px;color:var(--g2)}
+.cta{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:9px;width:100%;border:0;border-radius:16px;background:linear-gradient(135deg,#1fa855,#17894a);color:#fff;font:inherit;font-size:17px;font-weight:800;padding:16px;margin-top:16px;cursor:pointer;box-shadow:0 10px 24px rgba(31,168,85,.32);transition:transform .2s,box-shadow .2s}
+.cta::after{content:"";position:absolute;inset:0;width:40%;background:rgba(255,255,255,.28);animation:shine 3.2s infinite}.cta:hover{transform:translateY(-2px)}.cta:active{transform:scale(.98)}
+.hint{text-align:center;color:var(--mut);font-size:12px;line-height:1.9;margin:11px 0 0}
+.ghost{display:block;margin:16px auto 0;border:1px solid var(--line);background:var(--card);color:var(--g2);border-radius:13px;padding:11px 18px;font:inherit;font-size:13px;cursor:pointer;transition:.25s}.ghost:hover{background:var(--g3)}
+footer{text-align:center;color:var(--mut);font-size:12px;padding:18px}
+.bar{position:fixed;inset:auto 0 0 0;z-index:20;padding:10px 14px calc(12px + env(safe-area-inset-bottom,0px));transform:translateY(130%);transition:transform .5s cubic-bezier(.2,.9,.3,1.2)}.bar.show{transform:none}
+.bar div{max-width:680px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--ink);color:var(--bg);border-radius:20px;padding:11px 14px 11px 11px;box-shadow:0 14px 36px rgba(0,0,0,.3)}
+.bar small{display:block;opacity:.7;font-size:11.5px}.bar b{font-size:19px}.bar button{border:0;border-radius:14px;background:var(--wa);color:#fff;font:inherit;font-weight:800;padding:12px 18px;cursor:pointer}
+.hidden{display:none!important}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.top h2{margin:0}
+.sbtn{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:9px 13px;border-radius:11px;font:inherit;font-size:13px;cursor:pointer}
+.pbtn{display:block;width:100%;border:0;background:var(--g);color:#fff;padding:13px;border-radius:13px;font:inherit;font-weight:700;margin-top:11px;cursor:pointer;transition:.2s}.pbtn:hover{background:var(--g2)}.pbtn.alt{background:var(--g3);color:var(--g2)}
+.arow{display:grid;grid-template-columns:54px 1fr 90px 44px;gap:7px;padding:9px 0;border-bottom:1px solid var(--line);align-items:center}.arow input{padding:10px 8px;font-size:13px;text-align:center}.arow input.nm{text-align:right}
+.arow .del{border:0;background:#fdeeee;color:var(--red);border-radius:11px;height:42px;cursor:pointer;font-size:16px}
+.note{background:var(--g3);border-radius:13px;padding:12px;color:var(--mut);font-size:12px;line-height:1.9;margin-top:12px}
+.ov{position:fixed;inset:0;z-index:50;background:rgba(10,14,9,.55);backdrop-filter:blur(5px);display:grid;place-items:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s}.ov.show{opacity:1;pointer-events:auto}
+.modal{width:100%;max-width:360px;background:var(--card);border-radius:24px;padding:22px;transform:scale(.88) translateY(20px);transition:transform .35s cubic-bezier(.2,.9,.3,1.3);text-align:center}.ov.show .modal{transform:none}
+.modal h3{margin:0 0 6px;font-size:18px}.modal p{margin:0 0 12px;color:var(--mut);font-size:13.5px;line-height:1.8}.modal .row{display:flex;gap:9px;margin-top:14px}.modal .row button{flex:1;margin:0}
+.toast{position:fixed;z-index:60;left:50%;top:calc(16px + env(safe-area-inset-top,0px));transform:translate(-50%,-140%);background:var(--ink);color:var(--bg);padding:12px 20px;border-radius:14px;font-size:14px;font-weight:500;box-shadow:0 12px 30px rgba(0,0,0,.3);transition:transform .45s cubic-bezier(.2,.9,.3,1.3);max-width:90vw;text-align:center}.toast.show{transform:translate(-50%,0)}
+.shake{animation:sh .4s}@keyframes sh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+@media(max-width:440px){.arow{grid-template-columns:46px 1fr 74px 40px}.hero h1{font-size:23px}}
+@media(prefers-reduced-motion:reduce){*,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero"><i></i><i></i><i></i>
+  <button class="theme" id="themeBtn" aria-label="تبديل الوضع">🌙</button>
+  <div class="logo">✿</div>
+  <h1>اطلب توزيعاتك بسهولة</h1>
+  <p>اختر المنتجات والكميات وشاهد الإجمالي لحظياً<br>ثم أرسل طلبك بشكل منسّق عبر واتساب</p>
+</header>
+
+<main id="customerPage">
+  <div class="steps"><span><b>١</b>اختر المنتجات</span><span><b>٢</b>أضف التفاصيل</span><span><b>٣</b>أرسل عبر واتساب</span></div>
+  <section class="sec"><h2><em>🛍️</em>المنتجات</h2><div id="products"></div></section>
+  <section class="sec"><h2><em>✍️</em>تفاصيل الطلب</h2>
+    <label for="customer">الاسم (اختياري)</label><input id="customer" placeholder="اكتب اسمك" autocomplete="name">
+    <label for="occasion">المناسبة (اختياري)</label><input id="occasion" placeholder="مثال: زواج، تخرج، مواليد">
+    <label for="notes">ملاحظات أو تفاصيل التخصيص</label><textarea id="notes" placeholder="مثال: كتابة اسم، لون معين، أو تفاصيل التغليف…"></textarea>
+  </section>
+  <section class="sec" id="summary"><h2><em>🧾</em>ملخص الطلب</h2>
+    <div class="lines" id="lines"></div>
+    <div class="tr"><span>عدد القطع</span><b id="count">0</b></div>
+    <div class="tr grand"><span>الإجمالي</span><strong id="total">0 ريال</strong></div>
+    <button class="cta" id="sendBtn">إرسال الطلب عبر واتساب <span>💬</span></button>
+    <p class="hint">سيتم فتح واتساب برسالة جاهزة تحتوي على تفاصيل طلبك.</p>
+  </section>
+  <button class="ghost" id="traderBtn">⚙ دخول التاجر</button>
+</main>
+
+<main id="adminPage" class="hidden">
+  <section class="sec"><div class="top"><h2>لوحة تحكم التاجر</h2><button class="sbtn" id="backBtn">العودة للمتجر</button></div>
+    <p class="hint" style="text-align:right">إدارة المنتجات والأسعار ورقم الواتساب والرقم السري.</p></section>
+  <section class="sec"><h2><em>📦</em>إدارة المنتجات</h2>
+    <div id="adminProducts"></div>
+    <button class="pbtn alt" id="addBtn">＋ إضافة منتج</button>
+    <button class="pbtn" id="saveProdBtn">حفظ المنتجات والأسعار</button></section>
+  <section class="sec"><h2><em>📱</em>رقم واتساب استقبال الطلبات</h2>
+    <label for="adminPhone">الرقم مع مفتاح الدولة، بدون + أو مسافات</label><input id="adminPhone" inputmode="tel" placeholder="9665XXXXXXXX" dir="ltr">
+    <button class="pbtn" id="savePhoneBtn">حفظ رقم الجوال</button></section>
+  <section class="sec"><h2><em>🔐</em>تغيير الرقم السري</h2>
+    <label for="oldPin">الرقم السري الحالي</label><input id="oldPin" type="password" inputmode="numeric">
+    <label for="newPin">الرقم السري الجديد</label><input id="newPin" type="password" inputmode="numeric">
+    <button class="pbtn" id="changePinBtn">تغيير الرقم السري</button></section>
+  <div class="note">تنبيه: هذه نسخة تجريبية تحفظ التعديلات داخل متصفح هذا الجهاز فقط، ولن تظهر للعميل على جهازه تلقائياً. والرقم السري هنا ليس حماية حقيقية لمتجر منشور.</div>
+</main>
+<footer>نسعد بخدمتكم ♡</footer>
+</div>
+
+<div class="bar" id="bar"><div><span><small id="barCount">0 قطعة</small><b id="barTotal">0 ريال</b></span><button id="barBtn">إرسال الطلب ←</button></div></div>
+<div class="ov" id="ov"><div class="modal" id="modal"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const DEFAULT_PRODUCTS=[{id:1,name:"علبة ماء زجاج",price:8,icon:"🍶"}];
+const DEFAULT_PHONE="966536127287", DEFAULT_PIN="1234";
+const $=id=>document.getElementById(id);
+const ls={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const readJSON=(k,f)=>{try{const v=ls.get(k);return v?JSON.parse(v):f}catch(e){return f}};
+let products=readJSON("shop_products",DEFAULT_PRODUCTS),phone=ls.get("shop_phone")||DEFAULT_PHONE,pin=ls.get("shop_pin")||DEFAULT_PIN,q={};
+const num=n=>Number(n).toLocaleString("en-US",{maximumFractionDigits:2});
+const money=n=>num(n)+" ريال";
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+/* theme */
+function setTheme(t){document.documentElement.setAttribute("data-theme",t);$("themeBtn").textContent=t==="dark"?"☀️":"🌙";ls.set("shop_theme",t)}
+setTheme(ls.get("shop_theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"));
+$("themeBtn").onclick=()=>setTheme(document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark");
+
+/* toast + modal */
+let tt;function toast(m){const t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("show"),2600)}
+function modal(html){$("modal").innerHTML=html;$("ov").classList.add("show")}
+function closeModal(){$("ov").classList.remove("show")}
+$("ov").onclick=e=>{if(e.target.id==="ov")closeModal()};
+
+/* customer */
+function render(){
+  products.forEach(p=>{if(q[p.id]===undefined)q[p.id]=0});
+  $("products").innerHTML=products.map((p,i)=>`<article class="card${q[p.id]?" on":""}" id="c${p.id}" style="--i:${i}"><div class="thumb">${esc(p.icon||"🎁")}</div><div class="info"><h3>${esc(p.name)}</h3><div class="pr">${money(p.price)} / الحبة</div></div><div class="qty"><button data-id="${p.id}" data-d="1" aria-label="زيادة">+</button><span class="n" id="n${p.id}">${q[p.id]}</span><button data-id="${p.id}" data-d="-1" aria-label="إنقاص">−</button></div></article>`).join("")||'<p class="empty">لا توجد منتجات حالياً.</p>';
+  update(true);
+}
+$("products").addEventListener("click",e=>{const b=e.target.closest("button[data-id]");if(!b)return;const id=b.dataset.id;q[id]=Math.max(0,(q[id]||0)+Number(b.dataset.d));const n=$("n"+id);n.textContent=q[id];n.classList.remove("bump");void n.offsetWidth;n.classList.add("bump");$("c"+id).classList.toggle("on",q[id]>0);update()});
+let shown=0;
+function animateTo(total){const from=shown,t0=performance.now();shown=total;(function f(t){const k=Math.min(1,(t-t0)/450),v=from+(total-from)*(1-Math.pow(1-k,3));$("total").textContent=money(v);$("barTotal").textContent=money(v);if(k<1)requestAnimationFrame(f)})(t0)}
+const chosen=()=>products.filter(p=>(q[p.id]||0)>0);
+function update(skip){
+  const c=chosen(),count=c.reduce((s,p)=>s+q[p.id],0),total=c.reduce((s,p)=>s+q[p.id]*Number(p.price),0);
+  $("count").textContent=count;$("barCount").textContent=count+" قطعة";
+  $("lines").innerHTML=c.length?c.map(p=>`<div class="ln"><span>${esc(p.name)} <small style="color:var(--mut)">× ${q[p.id]}</small></span><span>${money(q[p.id]*Number(p.price))}</span></div>`).join(""):'<p class="empty">لم تختر أي منتج بعد 🌿</p>';
+  skip?(shown=total,$("total").textContent=money(total),$("barTotal").textContent=money(total)):animateTo(total);
+  $("bar").classList.toggle("show",count>0&&!$("customerPage").classList.contains("hidden"));
+}
+
+/* WhatsApp message */
+function buildMessage(){
+  const c=chosen(),count=c.reduce((s,p)=>s+q[p.id],0),total=c.reduce((s,p)=>s+q[p.id]*Number(p.price),0);
+  const now=new Date(),date=now.toLocaleDateString("ar-SA-u-ca-gregory-nu-latn",{weekday:"long",day:"numeric",month:"long",year:"numeric"}),time=now.toLocaleTimeString("ar-SA-u-nu-latn",{hour:"2-digit",minute:"2-digit"});
+  const id="#"+now.getTime().toString(36).slice(-5).toUpperCase();
+  const name=$("customer").value.trim(),occ=$("occasion").value.trim(),notes=$("notes").value.trim(),L="━━━━━━━━━━━━━━";
+  let m=`*طلب جديد*\n${L}\n• *رقم الطلب:* ${id}\n• *التاريخ:* ${date}\n• *الوقت:* ${time}\n`;
+  if(name)m+=`• *الاسم:* ${name}\n`;if(occ)m+=`• *المناسبة:* ${occ}\n`;
+  m+=`${L}\n*تفاصيل الطلب*\n\n`;
+  m+=c.map((p,i)=>`${i+1}- *${p.name}*\n      ${q[p.id]} × ${money(p.price)} = *${money(q[p.id]*Number(p.price))}*`).join("\n\n");
+  m+=`\n\n${L}\n• *عدد القطع:* ${count}\n• *الإجمالي:* ${money(total)}\n${L}`;
+  if(notes)m+=`\n• *ملاحظات:*\n${notes}\n${L}`;
+  m+=`\n\nفضلاً تأكيد التوفر والتكلفة النهائية.\nشكراً لكم`;
+  return m;
+}
+function sendOrder(){
+  if(!chosen().length){toast("فضلاً اختر منتجاً واحداً على الأقل 🌿");$("summary").classList.add("shake");setTimeout(()=>$("summary").classList.remove("shake"),450);$("products").scrollIntoView({behavior:"smooth",block:"center"});return}
+  const url="https://wa.me/"+phone.replace(/\D/g,"")+"?text="+encodeURIComponent(buildMessage());
+  let w=null;try{w=window.open(url,"_blank")}catch(e){}
+  if(!w)modal(`<h3>جاهز للإرسال ✅</h3><p>اضغط الزر التالي لفتح واتساب برسالة طلبك الجاهزة.</p><a href="${url}" target="_blank" rel="noopener" style="text-decoration:none;display:block" class="pbtn" id="waGo">فتح واتساب 💬</a><div class="row"><button class="pbtn alt" id="cpy">نسخ الرسالة</button><button class="pbtn alt" id="cls">إغلاق</button></div>`),
+    $("cls").onclick=closeModal,$("waGo").onclick=()=>setTimeout(closeModal,300),$("cpy").onclick=()=>{try{navigator.clipboard.writeText(buildMessage()).then(()=>toast("تم نسخ الرسالة"),()=>toast("تعذّر النسخ"))}catch(e){toast("تعذّر النسخ")}};
+}
+$("sendBtn").onclick=sendOrder;$("barBtn").onclick=sendOrder;
+
+/* trader */
+$("traderBtn").onclick=()=>{
+  modal(`<h3>🔐 دخول التاجر</h3><p>أدخل الرقم السري للمتابعة</p><input id="pinIn" type="password" inputmode="numeric" placeholder="••••" style="text-align:center;letter-spacing:6px;font-size:20px"><div class="row"><button class="pbtn" id="pinOk">دخول</button><button class="pbtn alt" id="pinNo">إلغاء</button></div>`);
+  const go=()=>{if($("pinIn").value!==pin){$("modal").classList.add("shake");setTimeout(()=>$("modal").classList.remove("shake"),450);toast("الرقم السري غير صحيح");return}closeModal();$("customerPage").classList.add("hidden");$("adminPage").classList.remove("hidden");$("bar").classList.remove("show");renderAdmin();scrollTo({top:0})};
+  $("pinOk").onclick=go;$("pinNo").onclick=closeModal;$("pinIn").onkeydown=e=>{if(e.key==="Enter")go()};setTimeout(()=>$("pinIn").focus(),250);
+};
+$("backBtn").onclick=()=>{$("adminPage").classList.add("hidden");$("customerPage").classList.remove("hidden");render();scrollTo({top:0})};
+function renderAdmin(){
+  $("adminPhone").value=phone;
+  $("adminProducts").innerHTML=products.map((p,i)=>`<div class="arow"><input id="pi${i}" value="${esc(p.icon||"🎁")}" aria-label="أيقونة"><input class="nm" id="pn${i}" value="${esc(p.name)}" aria-label="اسم المنتج"><input id="pp${i}" type="number" min="0" step="0.01" value="${Number(p.price)}" aria-label="السعر"><button class="del" data-i="${i}" aria-label="حذف">🗑</button></div>`).join("")||'<p class="empty">لا توجد منتجات. أضف منتجاً جديداً.</p>';
+}
+function collect(){
+  const u=products.map((p,i)=>({id:p.id,name:($("pn"+i)?.value||"").trim(),price:Number($("pp"+i)?.value),icon:($("pi"+i)?.value||"").trim()||"🎁"}));
+  if(u.some(p=>!p.name||!Number.isFinite(p.price)||p.price<0)){toast("اكتب اسماً وسعراً صحيحاً لكل منتج");return null}return u;
+}
+const persist=()=>ls.set("shop_products",JSON.stringify(products));
+$("saveProdBtn").onclick=()=>{const u=collect();if(!u)return;products=u;persist();renderAdmin();toast("تم حفظ المنتجات والأسعار ✅")};
+$("addBtn").onclick=()=>{const u=collect();if(!u)return;products=u;products.push({id:Date.now(),name:"منتج جديد",price:0,icon:"🎁"});renderAdmin()};
+$("adminProducts").onclick=e=>{const b=e.target.closest(".del");if(!b)return;const i=Number(b.dataset.i);
+  modal(`<h3>حذف المنتج؟</h3><p>سيتم حذف هذا المنتج من المتجر.</p><div class="row"><button class="pbtn" id="yes" style="background:var(--red)">حذف</button><button class="pbtn alt" id="no">إلغاء</button></div>`);
+  $("no").onclick=closeModal;$("yes").onclick=()=>{closeModal();const u=collect();if(!u)return;products=u;products.splice(i,1);persist();renderAdmin();toast("تم الحذف")};
+};
+$("savePhoneBtn").onclick=()=>{const v=$("adminPhone").value.replace(/\D/g,"");if(!/^9665\d{8}$/.test(v)){toast("أدخل رقماً سعودياً بصيغة 9665XXXXXXXX");return}phone=v;ls.set("shop_phone",v);toast("تم حفظ رقم الواتساب ✅")};
+$("changePinBtn").onclick=()=>{const o=$("oldPin").value,n=$("newPin").value;if(o!==pin){toast("الرقم السري الحالي غير صحيح");return}if(n.length<4){toast("اجعل الرقم السري 4 أرقام على الأقل");return}pin=n;ls.set("shop_pin",n);$("oldPin").value=$("newPin").value="";toast("تم تغيير الرقم السري ✅")};
+
+render();
+</script>
+</body>
+</html>
